@@ -1,0 +1,244 @@
+    <!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Ethan Jackwitz">
+		<meta name="description" content="A website about iOS Development.">
+		<meta name="generator" content="Hugo 0.25.1" />
+		<title>In The Beginning &middot; Ethan Jackwitz</title>
+		<link rel="shortcut icon" href="https://blog.vdka.com/img/favicon.ico">
+		<link rel="stylesheet" href="https://blog.vdka.com/css/style.css">
+		
+		<link href="https://blog.vdka.com/index.xml" rel="alternate" type="application/rss+xml" title="Ethan Jackwitz" />
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='https://blog.vdka.com/'> <span class="arrow">←</span>Home</a>
+	
+
+	
+		<a href='https://blog.vdka.com/about'>About</a>
+	
+
+	
+	<a class="cta" href="https://blog.vdka.com/index.xml">Subscribe</a>
+	
+</nav>
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h1>In The Beginning</h1>
+                    <h2 class="headline">November 27, 2015</h2>
+                </header>
+                <section id="post-body">
+                    <p>Initialization and configuration can be a tricky topic in Swift. It can be difficult to know where to put things. This leaves plenty of people with stray implicitly unwrapped optionals laying around. Thankfully there can be a couple of neat tricks to tidy up your initialization code.</p>
+
+<p>Implicitly unwrapped optionals are going to feel most familiar to Obj-C developers. These act like pointers insofar as they allow you to declare a property without worrying about setting the property immediately. Implicitly unwrapping an optional is the developer <em>promising</em> you that whenever you access the optional it will never be <code>nil</code>.</p>
+
+<pre><code class="language-swift">class Method1: Example1 {
+	var request: NSURLRequest!
+
+	func setup() { //eg. viewDidLoad
+		let request = NSMutableURLRequest()
+		request.URL = NSURL(string: &quot;https://api.github.com/users/vdka&quot;)!
+		request.cachePolicy = .ReturnCacheDataElseLoad
+		request.HTTPMethod = &quot;GET&quot;
+		self.request = request
+	}
+}
+</code></pre>
+
+<p>There are a couple of problems with this.</p>
+
+<ol>
+<li>A developer might expect to be able to access the request from another view controller before initialization in order to do something smart like begin loading the resource during a <code>segue</code>. No problem right, declaring <code>var request: NSURLRequest!</code> you have <em>promised</em> this value would always be set when accessed. Well, it isn&rsquo;t set until we call the <code>setup()</code> method. The typical <em>setup</em> method we see in iOS development is <code>viewDidLoad()</code>. Accessing this request here will cause a crash.</li>
+<li>The initialization of the request is completely separate to the declaration. This makes our code less readable.</li>
+<li>The request must be declared as a <code>var</code> as you modify it after you initialize it in order to set it up for use.</li>
+</ol>
+
+<p>Lets look at a way we can address both of these issues.</p>
+
+<pre><code class="language-swift">class Method2: Example2 {
+	var request: NSURLRequest {
+		let request = NSMutableURLRequest()
+		request.URL = NSURL(string: &quot;https://api.github.com/users/vdka&quot;)!
+		request.cachePolicy = .ReturnCacheDataElseLoad
+		request.HTTPMethod = &quot;GET&quot;
+		return request
+	}
+}
+</code></pre>
+
+<p>Here what we are doing is taking advantage of Swift&rsquo;s <em>computed properties</em> feature. Essentially this is short hand for declaring a property with a getter.</p>
+
+<p>In fact this can be expanded to be of the form:</p>
+
+<pre><code class="language-swift">var request: NSURLRequest {
+	get {
+		...
+	}
+}
+</code></pre>
+
+<p>What we have perfectly addresses the issues we had with the previous <code>Method1</code>. The request value is now <em>computed</em> upon request and the initialization code is now a <em>part</em> of the properties declaration.</p>
+
+<p>This is perfect right? Well, not exactly.</p>
+
+<p>So what is wrong with it then?</p>
+
+<p>It is now a computed property. Meaning every time you access the property it is re-computed.</p>
+
+<p>Want to access this request 400 times in a couple seconds? That will really hurt.</p>
+
+<p>This can be seen by adding a count to each bit of configuration code and accessing the properties multiple times.</p>
+
+<p>The real kick is when you realize that accessing the property on the class <code>Method1</code> will only ever call the configuration code once, when you call <code>setup()</code>. So how can we solve this?</p>
+
+<p>Well there is an even swifter way to do this.</p>
+
+<pre><code class="language-swift">class Method3: Example2 {
+	let request: NSURLRequest = {
+		let request = NSMutableURLRequest()
+		request.URL = NSURL(string: &quot;https://api.github.com/users/vdka&quot;)!
+		request.cachePolicy = .ReturnCacheDataElseLoad
+		request.HTTPMethod = &quot;GET&quot;
+		return request
+	}()
+}
+</code></pre>
+
+<p>This approach takes advantage of Swift&rsquo;s typing system and closures. The declaration of the request on this class may look like it is a closure type and not a NSURLRequest type (<code>(_) -&gt; NSURLRequest</code>) and well it does. However, because of the closure calling itself after declaration it is actually <em>just</em> the return type.</p>
+
+<p>Thanks to this no longer being a computed property the configuration code will no longer be run upon every call.</p>
+
+<p>Why stop there? To make things even better why not just run the configuration code when it is needed. This can be done as follows:</p>
+
+<pre><code class="language-swift">class Method4: Example2 {
+	private(set) lazy var request: NSURLRequest = {
+		let request = NSMutableURLRequest()
+		request.URL = NSURL(string: &quot;https://api.github.com/users/vdka&quot;)!
+		request.cachePolicy = .ReturnCacheDataElseLoad
+		request.HTTPMethod = &quot;GET&quot;
+		return request
+	}()
+}
+</code></pre>
+
+<p>Note the need to add <code>private(set)</code> in order to maintain immutability to outside classes. I would love to see <code>lazy let</code> be a future feature.</p>
+
+                </section>
+            </article>
+            <footer id="post-meta" class="clearfix">
+                <a href="https://twitter.com/ejackwitz">
+                        <img class="avatar" src="https://blog.vdka.com/img/reuleauxTriangle.svg">
+                        <div>
+                            <span class="dark">Ethan Jackwitz</span>
+                            <span>Brisbane based iOS Developer.</span>
+                        </div>
+                    </a>
+                <section id="sharing">
+                    <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fblog.vdka.com%2f2015%2f11%2f27%2fin-the-beginning%2f - In%20The%20Beginning by @ejackwitz"><span class="icon-twitter"> Tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+                </section>
+            </footer>
+
+            
+
+            <ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+    
+    
+        
+   
+    
+        
+        <li>
+            <a href="https://blog.vdka.com/2015/11/27/in-the-beginning/">In The Beginning<aside class="dates">Nov 27</aside></a>
+        </li>
+        
+   
+    
+        
+   
+    
+        
+        <li>
+            <a href="https://blog.vdka.com/categories/">Categories<aside class="dates">Jan 1</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://blog.vdka.com/">Ethan Jackwitz<aside class="dates">Dec 12</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://blog.vdka.com/post/">Posts<aside class="dates">Nov 27</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://blog.vdka.com/tags/swift/">Swift<aside class="dates">Nov 27</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://blog.vdka.com/categories/swift/">Swift<aside class="dates">Nov 27</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://blog.vdka.com/tags/">Tags<aside class="dates">Nov 27</aside></a>
+        </li>
+        
+   
+</ul>
+            <footer id="footer">
+    <p class="small">
+        © Copyright 2017 Ethan Jackwitz
+    </p>
+</footer>
+        </section>
+
+        <link rel="stylesheet" href="https://blog.vdka.com/css/highlight.css">
+<script src="https://blog.vdka.com/js/highlight.js"></script>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-65631355-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+    </body>
+</html>
