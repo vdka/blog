@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Ethan Jackwitz</title>
-    <link>https://blog.vdka.com/categories/</link>
+    <link>https://blog.vdka.me/categories/</link>
     <description>Recent content in Categories on Ethan Jackwitz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://blog.vdka.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.vdka.me/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Swift</title>
-      <link>https://blog.vdka.com/categories/swift/</link>
+      <link>https://blog.vdka.me/categories/swift/</link>
       <pubDate>Fri, 27 Nov 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.vdka.com/categories/swift/</guid>
+      <guid>https://blog.vdka.me/categories/swift/</guid>
       <description></description>
     </item>
     
