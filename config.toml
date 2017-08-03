@@ -1,5 +1,5 @@
 # Site settings
-baseurl = "https://blog.vdka.com/"
+baseurl = "https://blog.vdka.me/"
 languageCode = "en-us"
 title = "Ethan Jackwitz"
 # Define how many pages appear per site
