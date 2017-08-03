@@ -1,23 +1,26 @@
-# Site settings
-baseurl = "https://blog.vdka.me/"
+
+baseurl = "https://blog.vdka.me"
 languageCode = "en-us"
 title = "Ethan Jackwitz"
-theme = "hemingway2"
+theme = "hugo-xmin"
+googleAnalytics = ""
+disqusShortname = ""
+preserveTaxonomyNames = true
+footnotereturnlinkcontents = "↩"
+
+[permalinks]
+    post = "/post/:year:month:day/:slug/"
+    note = "/note/:year:month:day/:slug/"
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+[[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
 
 [params]
-
-[params.highlight]
-style = "github"
-languages = ["go", "swift"]
-
-[[params.social]]
-url = "https://github.com/vdka"
-fa_icon = "fa-github"
-
-[[params.social]]
-url = "https://twitter.com/ejackwitz"
-fa_icon = "fa-twitter"
-
-[[params.social]]
-url = "/index.xml"
-fa_icon = "fa-rss"
+    description = "Developer."
+    footer = "&copy; [Ethan Jackwitz](https://blog.vdka.me) 2017 | [Github](https://github.com/vdka) | [Twitter](https://twitter.com/ejackwitz)"
