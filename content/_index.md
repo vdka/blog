@@ -1,38 +1,18 @@
 ---
-title: Home
+title: About Me
 ---
 
-[<img src="https://simpleicons.org/icons/github.svg" style="max-width:15%;min-width:40px;float:right;" alt="Github repo" />](https://github.com/yihui/hugo-xmin)
+I am an iOS developer.
+I have also spent my time on a number of other projects:
 
-# HUGO XMIN
+- A [Programming Language](https://github.com/kai-language/kai)
+- An [OpenGL Renderer](https://github.com/vdka/muse)
+- An [Evolutionary Optimizer](https://github.com/vdka/NSGA-Swift) based on [NSGA-II](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.542.385&rep=rep1&type=pdf)
+- A Runtime [Reflection](https://github.com/vdka/Reflect) library for Swift based off the [ABI](https://github.com/apple/swift/blob/swift-DEVELOPMENT-SNAPSHOT-2017-08-02-a/docs/ABI/TypeMetadata.rst)
+- A [JSON Parser](https://github.com/vdka/JSON) in Swift
+- A simple software based [nueral network](https://github.com/vdka/NeuralNetSwift)
 
-## _Keep it simple, but not simpler_
+I run [Brisbane Cocoaheads](https://cocoaheadsbne.github.io)
 
-**XMin** is a Hugo theme written by [Yihui Xie](https://yihui.name) in about four hours: half an hour was spent on the Hugo templates, and 3.5 hours were spent on styling. The main motivation for writing this theme was to provide a really minimal example to beginners of Hugo templates. This XMin theme contains about 130 lines of code in total, including the code in HTML templates and CSS (also counting empty lines).
+I also work for [Tappr](https://tappr.io) on our iOS Point of Sale app
 
-
-```bash
-find . -not -path '*/exampleSite/*' \( -name '*.html' -o -name '*.css' \) | xargs wc -l
-```
-
-```
-       5 ./layouts/404.html
-      18 ./layouts/_default/list.html
-      12 ./layouts/_default/single.html
-      16 ./layouts/_default/terms.html
-       0 ./layouts/partials/foot_custom.html
-       9 ./layouts/partials/footer.html
-       0 ./layouts/partials/head_custom.html
-      19 ./layouts/partials/header.html
-       7 ./static/css/fonts.css
-      50 ./static/css/style.css
-     136 total
-```
-
-I can certainly further reduce the code, for example, by eliminating the CSS, but I believe a tiny bit CSS can greatly improve readability. You cannot really find many CSS frameworks that only contain 50 lines of code.
-
-Although it is a minimal theme, it is actually fully functional. It supports pages (including the home page), blog posts, a navigation menu, categories, tags, and RSS. With [a little bit customization](https://github.com/yihui/hugo-xmin/blob/master/exampleSite/layouts/partials/foot_custom.html), it can easily support LaTeX math expressions, e.g.,
-
-`$${\sqrt {n}}\left(\left({\frac {1}{n}}\sum _{i=1}^{n}X_{i}\right)-\mu \right)\ {\xrightarrow {d}}\ N\left(0,\sigma ^{2}\right)$$`
-
-All pages not under the root directory of the website are listed below. You can also visit the list page of a single section, e.g., [posts](/post/), or [notes](/note/). See the [About](/about/) page for the usage of this theme.

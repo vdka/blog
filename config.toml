@@ -13,13 +13,9 @@ footnotereturnlinkcontents = "↩"
     note = "/note/:year:month:day/:slug/"
 
 [[menu.main]]
-    name = "Home"
+    name = "About"
     url = "/"
     weight = 1
-[[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 2
 
 [params]
     description = "Developer."
