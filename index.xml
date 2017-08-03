@@ -6,20 +6,9 @@
     <description>Recent content on Ethan Jackwitz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Nov 2015 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.vdka.me/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>In The Beginning</title>
-      <link>https://blog.vdka.me/2015/11/27/in-the-beginning/</link>
-      <pubDate>Fri, 27 Nov 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.vdka.me/2015/11/27/in-the-beginning/</guid>
-      <description>Initialization and configuration can be a tricky topic in Swift. It can be difficult to know where to put things. This leaves plenty of people with stray implicitly unwrapped optionals laying around. Thankfully there can be a couple of neat tricks to tidy up your initialization code.
-Implicitly unwrapped optionals are going to feel most familiar to Obj-C developers. These act like pointers insofar as they allow you to declare a property without worrying about setting the property immediately.</description>
-    </item>
     
   </channel>
 </rss>
