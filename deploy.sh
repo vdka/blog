@@ -13,8 +13,8 @@ msg="rebuilding site `date`"
 if [ $# -eq 1 ]
 	then msg="$1"
 fi
-git commit --amend -m "$msg"
+git commit -m "$msg"
 
 # Push source and build repos.
-git push --force origin master
+git push origin master
 git subtree push --prefix public origin gh-pages
