@@ -1,25 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home on Ethan Jackwitz</title>
+    <title>About Me on Ethan Jackwitz</title>
     <link>https://blog.vdka.me/</link>
-    <description>Recent content in Home on Ethan Jackwitz</description>
+    <description>Recent content in About Me on Ethan Jackwitz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
 	<atom:link href="https://blog.vdka.me/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>About Me</title>
-      <link>https://blog.vdka.me/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.vdka.me/about/</guid>
-      <description>I am an iOS developer. I have also spent my time on a number of other projects:
- A Programming Language An OpenGL Renderer An Evolutionary Optimizer based on NSGA-II A Runtime Reflection library for Swift based off the ABI A JSON Parser in Swift A simple software based nueral network  I run Brisbane Cocoaheads
-I also work for Tappr on our iOS Point of Sale app</description>
-    </item>
     
   </channel>
 </rss>
