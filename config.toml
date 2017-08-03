@@ -2,42 +2,22 @@
 baseurl = "https://blog.vdka.me/"
 languageCode = "en-us"
 title = "Ethan Jackwitz"
-# Define how many pages appear per site
-paginate = 10
-canonifyurls = true
-theme = "hugo-cactus-theme"
-googleAnalytics = "UA-65631355-2"
-# disqusShortname = "blog-ejackwitz"
-# pygmentsUseClasses = true
-# PygmentsCodeFences = true
-# PygmentsStyle = "friendly"
+theme = "hemingway2"
 
 [params]
-    name = "Ethan Jackwitz"
-    description = "A website about iOS Development."
-    bio = "Brisbane based iOS Developer."
-    # Enter optionally your twitter account
-    twitter = "ejackwitz"
-    enableRSS = true
 
-    profileImage = "img/reuleauxTriangle.svg"
+[params.highlight]
+style = "github"
+languages = ["go", "swift"]
 
-    # The variables below are optionally too and can be used to
-    # translate or customize each string of the theme.
+[[params.social]]
+url = "https://github.com/vdka"
+fa_icon = "fa-github"
 
-    # Navigation links
-    home = "Home"
-    about = ""
-    subscribe = ""
-    # Pagination links
-    olderPosts = ""
-    newerPosts = ""
-    readMore = ""
-    copyright = ""
-    # Sharing options and author information in posts
-    aboutAuthor = "Brisbane based iOS Developer."
-    tweet = ""
-    share = ""
-    # 404 page
-    title404 = ""
-    subtitle404 = ""
+[[params.social]]
+url = "https://twitter.com/ejackwitz"
+fa_icon = "fa-twitter"
+
+[[params.social]]
+url = "/index.xml"
+fa_icon = "fa-rss"
