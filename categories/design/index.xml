@@ -12,15 +12,6 @@
     
     
     <item>
-      <title>Blog Dark Theme</title>
-      <link>https://blog.vdka.me/notes/blog-dark-theme/</link>
-      <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.vdka.me/notes/blog-dark-theme/</guid>
-      <description>How this dark theme was generated The code was automatically generated Dark Reader (in this case the safari plugin in dynamic mode). The CSS was then exported on following advice. I haven&amp;rsquo;t yet cleaned the generated CSS at all.</description>
-    </item>
-    
-    <item>
       <title>Design Inspiration</title>
       <link>https://blog.vdka.me/notes/design-inspirations/</link>
       <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
