@@ -4,7 +4,7 @@
          
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Categories</title>
+        <title>System Headers</title>
         
         <style>
 
@@ -64,9 +64,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.49" />
         
-        <link href="https://blog.vdka.me/categories/index.xml" rel="alternate" type="application/rss+xml" title="Ethan Jackwitz" />
-        <link href="https://blog.vdka.me/categories/index.xml" rel="feed" type="application/rss+xml" title="Ethan Jackwitz" />
-        
 
         
     </head>
@@ -86,7 +83,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Categories</a>
+                    <a class="navbar-brand visible-xs" href="#">System Headers</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -131,9 +128,7 @@
 
 <main>
 
-    <h2>Categories</h2>
-
-     <div class="item">
+    <div class="item">
 
     
     
@@ -142,16 +137,51 @@
     
     
 
-    <h4><a href="/categories/design/">Design</a></h4>
-    <h5>October 19, 2018</h5>
+    <h4><a href="/posts/2018-03-19-system-headers/">System Headers</a></h4>
+    <h5>March 19, 2018</h5>
+    
+    <a href="https://blog.vdka.metags/macos"><kbd class="item-tag">macOS</kbd></a>
+    
+    <a href="https://blog.vdka.metags/xcode"><kbd class="item-tag">Xcode</kbd></a>
     
 
 </div>
- 
+
+
+    <br> <div class="text-justify">
+
+<h1 id="do-not-touch-system-headers">Do Not Touch System Headers</h1>
+
+<h2 id="but-if-you-do-it-s-ok">But if you do it&rsquo;s ok</h2>
+
+<p>Editing system headers can provide the most mind boggling errors imaginable. Especially if what you edit a macro.</p>
+
+<p>I reconfirmed this while playing around with the definition of the <code>NS_ENUM</code> macro in <code>CoreFoundation</code>. I deleted it, got distracted and left the header file without thinking about it any further. Then suddenly I nothing would build for me.</p>
+
+<p><img src="/img/SystemHeadersErrors.png" alt="Lots of errors" /></p>
+
+<p>It took me probably 15 minutes before remembering I was playing around in system headers. I immediately knew what I had done. Desperate for solutions I looked for options for repairing your system headers, none were found, but I did stumble upon <a href="github.com/phracker/MacOSX-SDKs">phracker/MacOSX-SDKs</a></p>
+
+<p>I thought I may be able to replace my SDK with the one located there. Knowing that&rsquo;s a definite bad idea since I have no idea if any alterations have made their way into those SDK&rsquo;s.</p>
+
+<p>Instead I diff&rsquo;d the two SDK&rsquo;s using <a href="kaleidoscopeapp.com">Kaleidoscope</a>. <code>diff</code> would also work</p>
+
+<pre><code>diff -r Downloads/MacOSX10.13.sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk | less
+</code></pre>
+
+<p><img src="/img/SystemHeadersDiff.png" alt="5 line diff's can be the source of hours of potential pain" /></p>
+
+<p><img src="/img/SystemHeadersFuture.png" alt="Just for the future" /></p>
+</div>
+
+    
+    
+
+    
+
+    
 
 </main>
-
-
 
         <footer>
 

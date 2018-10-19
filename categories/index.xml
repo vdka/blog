@@ -10,5 +10,14 @@
 	<atom:link href="https://blog.vdka.me/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Design</title>
+      <link>https://blog.vdka.me/categories/design/</link>
+      <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.vdka.me/categories/design/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
