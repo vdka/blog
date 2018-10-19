@@ -1,18 +1,24 @@
 ---
-title: About Me
+title: About Ethan Jackwitz
 ---
 
-I am an iOS developer.
-I have also spent my time on a number of other projects:
+I am a Software Engineer in Brisbane, Australia.
 
-- A [Programming Language](https://github.com/kai-language/kai)
-- An [OpenGL Renderer](https://github.com/vdka/muse)
-- An [Evolutionary Optimizer](https://github.com/vdka/NSGA-Swift) based on [NSGA-II](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.542.385&rep=rep1&type=pdf)
-- A Runtime [Reflection](https://github.com/vdka/Reflect) library for Swift based off the [ABI](https://github.com/apple/swift/blob/swift-DEVELOPMENT-SNAPSHOT-2017-08-02-a/docs/ABI/TypeMetadata.rst)
-- A [JSON Parser](https://github.com/vdka/JSON) in Swift
-- A simple software based [nueral network](https://github.com/vdka/NeuralNetSwift)
+# Work
 
-I run [Brisbane Cocoaheads](https://cocoaheadsbne.github.io)
+I work at [Tappr](tappr.io) developing products including our iOS POS application.
 
-I also work for [Tappr](https://tappr.io) on our iOS Point of Sale app
+# Kai Programming Language
 
+I currently spend my spare time developing a language of my own design called Kai.
+
+Kai aims to be a simple low level programming language with a feature set somewhere between C and Go.
+
+Work on Kai began in late 2016 after being inspired by [Jonathan Blow's](twitter.com/Jonathan_Blow) work on [Jai](youtube.com/playlist?list=PLmV5I2fxaiCKfxMBrNsU1kgKJXD3PkyxO).
+
+The compiler design borrows things I have learnt from the [Go Compiler](github.com/golang/go)
+The language itself also borrows on some of Go's ideas and aims to build upon them further [Go](golang.org/ref/spec)
+
+# Speaking
+
+I regularly speak at the Brisbane CocoaHeads where I help organize. Slides from all my talks are available [here](https://github.com/vdka/presentations)
