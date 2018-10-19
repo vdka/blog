@@ -3,10 +3,7 @@ title: Blog Dark Theme
 author: Ethan Jackwitz
 date: '2018-10-19'
 categories:
-    - design
 tags:
-    - design
-    - inspiration
 ---
 
 # How this dark theme was generated

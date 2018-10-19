@@ -5,7 +5,8 @@ theme = "minimal"
 
 [params]
     author = "Ethan Jackwitz"
-    description = "Personal blog theme powered by Hugo"
+    copyright = "Copyright Ethan Jackwitz &copy; 2018"
+    description = "Developer. Designer."
     githubUsername = "vdka"
     accent = "white"
     showBorder = true
