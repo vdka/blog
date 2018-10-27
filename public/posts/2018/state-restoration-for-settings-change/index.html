@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>State Restoration for Settings Changes</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: black;
+    }
+
+    :root {
+        --accent: white;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://blog.vdka.me/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://blog.vdka.me/css/dark.css">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.49" />
+        
+
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">State Restoration for Settings Changes</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/posts/">Posts</a></li>
+                            
+                                <li><a href="/notes/">Notes</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/vdka"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/ejackwitz"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/ejackwitz/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/posts/2018/state-restoration-for-settings-change/">State Restoration for Settings Changes</a></h4>
+    <h5>March 19, 2018</h5>
+    
+    <a href="https://blog.vdka.metags/ios"><kbd class="item-tag">iOS</kbd></a>
+    
+    <a href="https://blog.vdka.metags/code"><kbd class="item-tag">Code</kbd></a>
+    
+    <a href="https://blog.vdka.metags/xcode"><kbd class="item-tag">Xcode</kbd></a>
+    
+    <a href="https://blog.vdka.metags/technical"><kbd class="item-tag">Technical</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<h1 id="state-restoration-with-custom-transition-modals">State Restoration with Custom Transition Modals</h1>
+
+<p>When requesting permissions and the user has in the past declined your application, the best thing you can do is open to your apps settings page. However if the user changes any of the permissions your app is granted the system will kill your app. This is a smart way to help ensure permissions are more easily enforced.
+The issue comes when a user would expect to be able to toggle the permission on and go straight back to where they were.
+</br>
+<video style="width:49%" controls>
+  <source src="/vid/WithoutStateRestoration.MP4" type="video/mp4">
+</video>
+<video style="width:49%" controls>
+  <source src="/vid/StateRestorationDesiredBehaviour.MP4" type="video/mp4">
+</video>
+</br></p>
+
+<p>You can see on the left that the app when reopened doesn&rsquo;t go straight back into the modal screen that was displayed ready to be used. Instead the user has to manually navigate back to it. The right is far better.</p>
+
+<p>This is done using <a href="https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/PreservingandRestoringState.html">State Restoration</a>.
+State restoration isn&rsquo;t exactly the simplest API to implement. Following is the alterations required to make it work in this example.</p>
+
+<pre><code class="language-swift">  // AppDelegate.swift
+  func applicationDidFinishLaunching(_ application: UIApplication) {
++     if window?.rootViewController == nil {
++         let root = ConsumerMainViewController()
++         window?.rootViewController = root
++     } else {
++         window?.rootViewController?.setNeedsStatusBarAppearanceUpdate()
++     }
+  }
+
++ func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -&gt; Bool {
++     window?.makeKeyAndVisible()
++     return true
++ }
+
++ func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -&gt; Bool {
++     coder.encode(Bundle.main.buildNumber, forKey: &quot;App-Build-Number&quot;)
++     return true
++ }
+
++ func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -&gt; Bool {
++     let version = coder.decodeFloat(forKey: &quot;App-Build-Number&quot;)
++     return version == Bundle.main.buildNumber
++ }
+
++ func application(_ application: UIApplication, viewControllerWithRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -&gt; UIViewController? {
++     if identifierComponents.last == &quot;CheckInModalNavigationController&quot; {
++         let nav = UINavigationController()
++         nav.restorationIdentifier = &quot;CheckInModalNavigationController&quot;
++         nav.setNavigationBarHidden(true, animated: false)
++         return nav
++     }
++     return nil
++ }
+</code></pre>
+
+<pre><code class="language-swift">  // TabViewController.swift
+  init() {
+      super.init(nibName: nil, bundle: nil)
++     self.restorationIdentifier = type(of: self).description()
++     self.restorationClass = type(of: self)
+  }
+
+// ...
++ extension TabViewController: UIViewControllerRestoration {
++     static func viewController(withRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -&gt; UIViewController? {
++         let vc = TabViewController()
++         // The app's root view controller must be set after it's restoration for any following presentations to work.
++         AppDelegate.shared.window?.rootViewController = vc
++         return vc
++     }
++ }
+</code></pre>
+
+<pre><code class="language-swift">  // CheckInViewController.swift
+
+  init() {
+      super.init(nibName: nil, bundle: nil)
++     self.restorationIdentifier = type(of: self).description()
++     self.restorationClass = type(of: self)
+  }
+
+  func checkIn() {
+      let modal = CheckInModalViewController()
+      let nav = UINavigationController(rootViewController: modal)
++     nav.restorationIdentifier = &quot;CheckInModalNavigationController&quot;
++     nav.setNavigationBarHidden(true, animated: false)
+      self.present(nav, animated: true)
+  }
+
+
++ extension CheckInViewController: UIViewControllerRestoration {
++     static func viewController(withRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -&gt; UIViewController? {
++         return CheckInViewController()
++     }
++ }
+</code></pre>
+
+<pre><code class="language-swift">  // CheckInModalViewController.swift
+  init() {
+      super.init(nibName: nil, bundle: nil)
++     self.restorationIdentifier = type(of: self).description()
++     self.restorationClass = type(of: self)
+      // ...
+
++ override func willMove(toParent parent: UIViewController?) {
++     super.willMove(toParent: parent)
++     if let parent = parent as? UINavigationController {
++         parent.transitioningDelegate = self
++         parent.modalPresentationStyle = .custom
++     }
++ }
+
++ extension CheckInModalViewController: UIViewControllerRestoration {
++     static func viewController(withRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -&gt; UIViewController? {
++         let vc = CheckInModalViewController()
++         // This isn't restored automatically
++         vc.overlay.effect = vc.backgroundVisualEffect
++         return vc
++     }
++ }
+</code></pre>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">Copyright Ethan Jackwitz &copy; 2018</p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

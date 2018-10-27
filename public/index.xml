@@ -31,14 +31,23 @@ Merchant  Adyen Stripe  Consumer (Banking)  Revoult for clean minimal design Mon
     </item>
     
     <item>
-      <title>System Headers</title>
-      <link>https://blog.vdka.me/posts/2018-03-19-system-headers/</link>
+      <title>Broken System Headers</title>
+      <link>https://blog.vdka.me/posts/2018/broken-system-headers/</link>
       <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.vdka.me/posts/2018-03-19-system-headers/</guid>
+      <guid>https://blog.vdka.me/posts/2018/broken-system-headers/</guid>
       <description>Do Not Touch System Headers But if you do it&amp;rsquo;s ok Editing system headers can provide the most mind boggling errors imaginable. Especially if what you edit a macro.
 I reconfirmed this while playing around with the definition of the NS_ENUM macro in CoreFoundation. I deleted it, got distracted and left the header file without thinking about it any further. Then suddenly I nothing would build for me.
 It took me probably 15 minutes before remembering I was playing around in system headers.</description>
+    </item>
+    
+    <item>
+      <title>State Restoration for Settings Changes</title>
+      <link>https://blog.vdka.me/posts/2018/state-restoration-for-settings-change/</link>
+      <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.vdka.me/posts/2018/state-restoration-for-settings-change/</guid>
+      <description>State Restoration with Custom Transition Modals When requesting permissions and the user has in the past declined your application, the best thing you can do is open to your apps settings page. However if the user changes any of the permissions your app is granted the system will kill your app. This is a smart way to help ensure permissions are more easily enforced. The issue comes when a user would expect to be able to toggle the permission on and go straight back to where they were.</description>
     </item>
     
   </channel>

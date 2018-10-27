@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Ethan Jackwitz</title>
-    <link>https://blog.vdka.me/posts/</link>
-    <description>Recent content in Posts on Ethan Jackwitz</description>
+    <title>Ios on Ethan Jackwitz</title>
+    <link>https://blog.vdka.me/tags/ios/</link>
+    <description>Recent content in Ios on Ethan Jackwitz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 19 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://blog.vdka.me/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.vdka.me/tags/ios/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Broken System Headers</title>
-      <link>https://blog.vdka.me/posts/2018/broken-system-headers/</link>
-      <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.vdka.me/posts/2018/broken-system-headers/</guid>
-      <description>Do Not Touch System Headers But if you do it&amp;rsquo;s ok Editing system headers can provide the most mind boggling errors imaginable. Especially if what you edit a macro.
-I reconfirmed this while playing around with the definition of the NS_ENUM macro in CoreFoundation. I deleted it, got distracted and left the header file without thinking about it any further. Then suddenly I nothing would build for me.
-It took me probably 15 minutes before remembering I was playing around in system headers.</description>
-    </item>
     
     <item>
       <title>State Restoration for Settings Changes</title>

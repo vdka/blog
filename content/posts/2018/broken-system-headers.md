@@ -1,5 +1,5 @@
 ---
-title: System Headers
+title: Broken System Headers
 author: Ethan Jackwitz
 date: '2018-03-19'
 categories:

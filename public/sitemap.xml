@@ -13,7 +13,12 @@
   </url>
   
   <url>
-    <loc>https://blog.vdka.me/posts/2018-03-19-system-headers/</loc>
+    <loc>https://blog.vdka.me/posts/2018/broken-system-headers/</loc>
+    <lastmod>2018-03-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.vdka.me/posts/2018/state-restoration-for-settings-change/</loc>
     <lastmod>2018-03-19T00:00:00+00:00</lastmod>
   </url>
   
@@ -28,8 +33,8 @@
   </url>
   
   <url>
-    <loc>https://blog.vdka.me/categories/design/</loc>
-    <lastmod>2018-10-19T00:00:00+00:00</lastmod>
+    <loc>https://blog.vdka.me/tags/code/</loc>
+    <lastmod>2018-03-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -40,8 +45,20 @@
   </url>
   
   <url>
+    <loc>https://blog.vdka.me/categories/design/</loc>
+    <lastmod>2018-10-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.vdka.me/tags/inspiration/</loc>
     <lastmod>2018-10-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.vdka.me/tags/ios/</loc>
+    <lastmod>2018-03-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -65,7 +82,13 @@
   
   <url>
     <loc>https://blog.vdka.me/tags/</loc>
-    <lastmod>2018-10-19T00:00:00+00:00</lastmod>
+    <lastmod>2018-03-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.vdka.me/tags/technical/</loc>
+    <lastmod>2018-03-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
