@@ -1,7 +1,7 @@
 ---
 title: State Restoration for Settings Changes
 author: Ethan Jackwitz
-date: '2018-03-19'
+date: '2018-10-27'
 categories:
 tags:
   - iOS
