@@ -134,3 +134,9 @@ State restoration isn't exactly the simplest API to implement. Following is the 
 +     }
 + }
 ```
+
+### Some Resources
+
+- [State restoration for modal view controllers](http://aplus.rs/2013/state-restoration-for-modal-view-controllers) - [aplus.rs](aplus.rs)
+- [State Restoration Tutorial: Getting Started](https://www.raywenderlich.com/1395-state-restoration-tutorial-getting-started) - [raywenderlich.com](raywenderlich.com)
+
